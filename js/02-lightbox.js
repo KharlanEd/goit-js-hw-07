@@ -22,7 +22,8 @@ containerGallery.addEventListener('click', onClick)
 function onClick(evt) {
     evt.preventDefault(); 
     var lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: `alt`
+        captionsData: `alt`,
+        captionDelay: 250
     })
     
 }
