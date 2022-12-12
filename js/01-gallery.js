@@ -27,15 +27,26 @@ function onClick(evt) {
     return
   }
   const selectedImage = evt.target.getAttribute('data-source')
-  const instance = basicLightbox.create(`<img src="${selectedImage}" width="800" height="600">`);
+  const instance = basicLightbox.create(`<img src="${selectedImage}" width="800" height="600">`,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", onKeydown)
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", onKeydown)
+      }
+    });
+
+
   instance.show()
-  document.addEventListener("keydown", evt => {
+
+  function onKeydown(evt) {
    
     if (evt.key === 'Escape') {
       instance.close()
     }
     
-})
+  }
 
 }
 
